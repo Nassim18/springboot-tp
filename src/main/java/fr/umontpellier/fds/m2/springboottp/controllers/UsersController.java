@@ -24,10 +24,10 @@ public class UsersController {
     }
     @GetMapping @RequestMapping("{id}")
     public User get(@PathVariable Long id) {
-        if(userRepository.findById(id).isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User with ID "+id+" not found");
+        if(userRepository.findById(id).isEmpty()){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User with ID"+id+"not found");
         }
-        return userRepository.getOne(id);
+         return userRepository.getOne(id);
     }
 
     @PostMapping

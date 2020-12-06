@@ -17,7 +17,7 @@ public class User {
 
     private List<Location> locations;
 
-    private String name,first_name,last_name,email,phone_number,password;
+    private String first_name,last_name,email,phone_number,password;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,14 +32,6 @@ public class User {
     }
 
     public User() {
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getFirst_name() {
