@@ -17,6 +17,7 @@ import java.util.List;
 public class UsersController {
     @Autowired
     private UserRepository userRepository;
+
     @GetMapping
     public List<User> list() {
         return userRepository.findAll();
@@ -28,18 +29,21 @@ public class UsersController {
         }
         return userRepository.getOne(id);
     }
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public User create(@RequestBody final User user) {
         System.out.println("Post method executed");
         return  userRepository.saveAndFlush(user);
     }
+
     @RequestMapping(value = "{id}",method = RequestMethod.DELETE)
     public void delete(@PathVariable Long id) {
         // Toujours verifier s'il faut supprimer aussi
         // les enregistrements enfants
         userRepository.deleteById(id);
     }
+
     // @ExceptionHandler(value = {HttpStatus.class})
     @RequestMapping(value="{id}",method = RequestMethod.PUT)
     public User update(@PathVariable Long id, @RequestBody User user) {

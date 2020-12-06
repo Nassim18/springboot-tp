@@ -1,11 +1,13 @@
 package fr.umontpellier.fds.m2.springboottp.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import net.minidev.json.annotate.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 @Entity(name="locations")
 @Access(AccessType.FIELD)
 public class Location {
@@ -16,6 +18,14 @@ public class Location {
     @ManyToMany(mappedBy = "locations")
     @JsonIgnore // Pour ne pas produire des cycles
     private List<User> users;
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
 
     @Id
     private long location_id;
