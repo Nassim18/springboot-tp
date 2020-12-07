@@ -13,7 +13,7 @@ import org.springframework.web.server.ResponseStatusException;
 public class HomeController {
 
     @Value("${app.version}")
-    private String appVersion;
+    private String appVersion;  //App version
 
     @GetMapping
     @RequestMapping("/")
